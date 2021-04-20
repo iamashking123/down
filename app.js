@@ -11,21 +11,23 @@ app.get("/download", (req, res) => {
 
 app.get("/search", (req, res) => {
   const { search } = req.query;
-  Anime.getAnimeFromURL(search).then((data) => {
+  Anime.getAnimeFromSearch(search).then((data) => {
+    res.send(data);
+  });
+});
+
+app.get("/recent", (req, res) => {
+  Anime.recentReleases().then((data) => {
     res.json(data);
   });
 });
-Anime.getAnimeFromURL(
-  "https://4anime.to/yakunara-mug-cup-mo-episode-03-1/?id=45500"
-).then((data) => {
-  console.log(data);
-});
-app.get("/front", (req, res) => {
-  Anime.frontPage().then((data) => {
-    res.send(data);
-    // console.log(data);
+
+app.get("/popular", (req, res) => {
+  Anime.popularThisWeek().then((data) => {
+    res.json(data);
   });
 });
+
 app.listen(4000, (err) => {
   if (err) throw err;
   console.log("Server Running");

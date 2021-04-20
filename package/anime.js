@@ -25,12 +25,13 @@ class Anime {
     this.episodes = episodes;
   }
 }
+
 class Overview {
-  constructor(name, imgUrl, videoUrl, episode) {
-    this.name = name;
+  constructor(animeName, imgUrl, videoUrl, extra) {
+    this.animeName = animeName;
     this.imgUrl = imgUrl;
     this.videoUrl = videoUrl;
-    this.episode = episode;
+    this.extra = extra;
   }
 }
 
