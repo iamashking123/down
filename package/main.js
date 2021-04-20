@@ -1,6 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const Anime = require("./anime").Anime;
+const { Anime, Overview } = require("./anime");
 
 class Scraper {
   handleName(animeName) {

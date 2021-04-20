@@ -25,7 +25,16 @@ class Anime {
     this.episodes = episodes;
   }
 }
+class Overview {
+  constructor(name, imgUrl, videoUrl, episode) {
+    this.name = name;
+    this.imgUrl = imgUrl;
+    this.videoUrl = videoUrl;
+    this.episode = episode;
+  }
+}
 
 module.exports = {
   Anime: Anime,
+  Overview: Overview,
 };
