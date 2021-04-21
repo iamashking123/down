@@ -30,14 +30,18 @@ class Scraper {
         const $ = cheerio.load(res.data);
         let animeName = $(".single-anime-desktop").text();
         let animeGenres = [];
-        $(".tag").each((_, elm) => {
-          let rawGenres = $(elm).text();
-          animeGenres.push(rawGenres);
-        });
-
-        $(".details").each((i, elm) => {
-          console.log($(`.title .data`));
-        });
+        $(".tag")
+          .find("a")
+          .each((_, elm) => {
+            let rawGenres = $(elm).text();
+            animeGenres.push(rawGenres);
+          });
+        const panel = [];
+        $(".flat-panel")
+          .find("a")
+          .each((i, elm) => {
+            panel.push($(elm).text());
+          });
 
         let animeDes = $("#description-mob").children().last().text();
         let imageUrl =
@@ -63,11 +67,11 @@ class Scraper {
           animeGenres,
           animeDes,
           imageUrl,
-          panelData[0].join(),
-          panelData[1].join().replace(",", ""),
-          panelData[2].join(),
-          panelData[3].join(),
-          panelData[4].join(),
+          panel[0],
+          panel[1],
+          `${panel[2]} , ${panel[3]}`,
+          panel[4],
+          panel[5],
           animeURL,
           animeEpisodes
         );
