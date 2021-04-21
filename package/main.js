@@ -30,35 +30,15 @@ class Scraper {
         const $ = cheerio.load(res.data);
         let animeName = $(".single-anime-desktop").text();
         let animeGenres = [];
-        $(".list")
-          .children()
-          .each((_, elm) => {
-            let rawGenres = $(elm).text().split("\n");
-            if (rawGenres[0] != "") {
-              animeGenres.push(rawGenres[0]);
-            }
-          });
-        let panelData = animeGenres.pop(animeGenres.length - 1);
-        panelData = panelData.split("   ");
-        if (panelData[0] == "  Bookmark") {
-          panelData.shift();
-        }
-        if (panelData[0] == "Change color of watched") {
-          panelData.shift();
-        }
-        panelData[0] = panelData[0].split(" Type ");
-        panelData[1] = panelData[1].split("Studio ");
-        panelData[2] = panelData[2].split("Release Date (JP) ");
-        panelData[3] = panelData[3].split("Status ");
-        panelData[4] = panelData[4].split("Language ");
+        $(".tag").each((_, elm) => {
+          let rawGenres = $(elm).text();
+          animeGenres.push(rawGenres);
+        });
 
-        if (panelData[1][1] == "") {
-          panelData[1][1] = "Studio ";
-        }
-        panelData[4][1] = panelData[4][1].replace("  ", "");
-        for (let elm of panelData) {
-          elm.shift();
-        }
+        $(".details").each((i, elm) => {
+          console.log($(`.title .data`));
+        });
+
         let animeDes = $("#description-mob").children().last().text();
         let imageUrl =
           "https://4anime.to" + $(".cover").children().last().attr("src");

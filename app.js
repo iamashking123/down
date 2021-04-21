@@ -28,6 +28,14 @@ app.get("/popular", (req, res) => {
   });
 });
 
+app.get("/details", (req, res) => {
+  Anime.getAnimeFromURL(
+    "https://4anime.to/anime/boku-no-hero-academia-5th-season"
+  ).then((data) => {
+    res.json(data);
+  });
+});
+
 app.listen(4000, (err) => {
   if (err) throw err;
   console.log("Server Running");
