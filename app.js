@@ -1,6 +1,7 @@
 const express = require("express");
 const Anime = require("./package/main").default;
 const app = express();
+const path = require("path");
 
 app.get("/download", (req, res) => {
   const { epUrl } = req.query;
@@ -16,24 +17,27 @@ app.get("/search", (req, res) => {
   });
 });
 
-app.get("/recent", (req, res) => {
+app.get("/recent", (_, res) => {
   Anime.recentReleases().then((data) => {
     res.json(data);
   });
 });
 
-app.get("/popular", (req, res) => {
+app.get("/popular", (_, res) => {
   Anime.popularThisWeek().then((data) => {
     res.json(data);
   });
 });
 
 app.get("/details", (req, res) => {
-  Anime.getAnimeFromURL(
-    "https://4anime.to/anime/boku-no-hero-academia-5th-season"
-  ).then((data) => {
+  const { url } = req.query;
+  Anime.getAnimeFromURL(url).then((data) => {
     res.json(data);
   });
+});
+
+app.get("/video", (_, res) => {
+  res.sendFile(path.resolve(__dirname, "video.mkv"));
 });
 
 app.listen(4000, (err) => {
