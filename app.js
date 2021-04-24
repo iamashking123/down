@@ -36,11 +36,8 @@ app.get("/details", (req, res) => {
   });
 });
 
-app.get("/video", (_, res) => {
-  res.sendFile(path.resolve(__dirname, "video.mkv"));
-});
-
-app.listen(4000, (err) => {
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, (err) => {
   if (err) throw err;
   console.log("Server Running");
 });
