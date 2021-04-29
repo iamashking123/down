@@ -29,21 +29,7 @@ class Scraper {
       .then((res) => {
         const $ = cheerio.load(res.data);
         let animeName = $(".single-anime-desktop").text();
-        let animeGenres = [];
-        $(".tag")
-          .find("a")
-          .each((_, elm) => {
-            let rawGenres = $(elm).text();
-            animeGenres.push(rawGenres);
-          });
-        const panel = [];
-        $(".flat-panel")
-          .find("a")
-          .each((i, elm) => {
-            panel.push($(elm).text());
-          });
 
-        let animeDes = $("#description-mob").children().last().text();
         let imageUrl =
           "https://4anime.to" + $(".cover").children().last().attr("src");
 
@@ -62,19 +48,7 @@ class Scraper {
             animeEpisodes.push(episodeData);
           });
 
-        let anime = new Anime(
-          animeName,
-          animeGenres,
-          animeDes,
-          imageUrl,
-          panel[0],
-          panel[1],
-          `${panel[2]} , ${panel[3]}`,
-          panel[4],
-          panel[5],
-          animeURL,
-          animeEpisodes
-        );
+        let anime = new Anime(animeName, imageUrl, animeURL, animeEpisodes);
         return anime;
       })
       .catch((err) => {
