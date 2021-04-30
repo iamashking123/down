@@ -1,7 +1,14 @@
 const express = require("express");
 const Anime = require("./package/main").default;
 const app = express();
-const path = require("path");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 app.get("/download", (req, res) => {
   const { epUrl } = req.query;

@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: black;
+  color: #ffffff;
+}
+.container {
+  text-align: center;
+  width: 100%;
+}
+.align_horizon {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.align_horizon div {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+  text-align: center;
+  justify-content: center;
+}
+.episode {
+  padding: 20px;
+}

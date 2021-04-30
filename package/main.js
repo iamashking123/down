@@ -116,21 +116,26 @@ class Scraper {
   popularThisWeek() {
     const url = "https://4anime.to/popular-this-week";
     const animes = [];
-    return axios.get(url).then((res) => {
-      const $ = cheerio.load(res.data);
-      $("#headerDIV_4").each((i, elm) => {
-        if (i < 10) {
-          const newAnime = new Overview(
-            $(elm).find("#headerA_7").text(),
-            $(elm).find("img").attr("src"),
-            $(elm).find("#headerA_5").attr("href"),
-            $(elm).find("#headerA_8").text()
-          );
-          animes.push(newAnime);
-        }
+    return axios
+      .get(url)
+      .then((res) => {
+        const $ = cheerio.load(res.data);
+        $("#headerDIV_4").each((i, elm) => {
+          if (i < 10) {
+            const newAnime = new Overview(
+              $(elm).find("#headerA_7").text(),
+              $(elm).find("img").attr("src"),
+              $(elm).find("#headerA_5").attr("href"),
+              $(elm).find("#headerA_8").text()
+            );
+            animes.push(newAnime);
+          }
+        });
+        return animes;
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      return animes;
-    });
   }
 
   cleanUpLink(url) {
