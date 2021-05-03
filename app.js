@@ -43,6 +43,8 @@ app.get("/details", (req, res) => {
   });
 });
 
+app.use("/manga", require("./routes/manga"));
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, (err) => {
   if (err) throw err;
