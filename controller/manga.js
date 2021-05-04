@@ -2,7 +2,6 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const Manga = require("../models/Manga");
 const Chapter = require("../models/Chapter");
-const puppeteer = require("puppeteer");
 
 class MangaScraper {
   handleName(mangaName) {
@@ -50,23 +49,6 @@ class MangaScraper {
       });
   }
   async getChapterImages(chapterUrl) {
-    // try {
-    //   const browser = await puppeteer.launch({ headless: true });
-    //   const page = await browser.newPage();
-    //   await page.goto(chapterUrl, { waitUntil: "load", timeout: 0 });
-    //   const data = await page.content();
-    //   browser.close();
-    //   const images = [];
-    //   const $ = cheerio.load(data);
-
-    //   $(".reader-main img").each((_, elm) => {
-    //     const imageUrl = $(elm).attr("src");
-    //     images.push(imageUrl);
-    //   });
-    //   return images;
-    // } catch (e) {
-    //   console.log(e);
-    // }
     return axios
       .get(chapterUrl)
       .then((res) => {
