@@ -11,7 +11,6 @@ router.get("/search/", (req, res) => {
 
 router.get("/details/", (req, res) => {
   const { mangaUrl } = req.query;
-  console.log(mangaUrl);
   MangaScraper.getMangaDetails(mangaUrl).then((data) => {
     res.send(data);
   });
@@ -19,8 +18,6 @@ router.get("/details/", (req, res) => {
 
 router.get("/chapter/", (req, res) => {
   const { chapterUrl } = req.query;
-  console.log(chapterUrl);
-
   MangaScraper.getChapterImages(chapterUrl).then((data) => {
     res.json(data);
   });

@@ -36,12 +36,14 @@ class MangaScraper {
       .then((res) => {
         const $ = cheerio.load(res.data);
         const chapters = [];
-        $(".chapter-container .no-gutters").each((_, elm) => {
-          const url = $(elm).find("a").attr("href");
-          const name = $(elm).find("a").text();
-          const newChapter = new Chapter(name, url);
-          chapters.push(newChapter);
-        });
+        $(".chapter-container > .no-gutters> .col > .align-items-center").each(
+          (_, elm) => {
+            const url = $(elm).find("a").attr("href");
+            const name = $(elm).find("a").text();
+            const newChapter = new Chapter(name, url);
+            chapters.push(newChapter);
+          }
+        );
         return chapters;
       })
       .catch((err) => {
