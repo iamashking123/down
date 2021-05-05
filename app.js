@@ -9,6 +9,15 @@ app.use(
   })
 );
 
+app.get("/officials", (req, res) => {
+  const details = [
+    { url: "https://4anime.to", title: "Powered By 4Anime" },
+    { url: "https://mangadex.tv/", title: "Powered By Mangadex" },
+    { url: "", title: "Official Website" },
+  ];
+  res.json(details);
+});
+
 app.use("/", require("./routes/anime"));
 app.use("/manga", require("./routes/manga"));
 
