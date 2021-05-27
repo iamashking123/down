@@ -37,9 +37,8 @@ app.get("/info", (req, res) => {
     [
       {
         title: "Github Download Link",
-        url: "",
+        url: "https://github.com/iamashking123/anime_app/releases/download/v1-arm64/Anime-arm64-v8a-release.apk",
       },
-      { title: "Dbree Download Link", url: "" },
     ],
   ];
   res.json(info);
