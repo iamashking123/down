@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const helmet = require("helmet");
 
+app.use(helmet());
 app.use(cors());
 
 app.get("/officials", (req, res) => {
