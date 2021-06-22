@@ -34,11 +34,11 @@ app.get("/info", (req, res) => {
         url: "https://github.com/iamashking123/anime_app/releases/download/v1-arm64/Anime-arm64-v8a-release.apk",
       },
     ],
-    { updates: "3.0.2" },
+    { updates: "3.0.3" },
     [
       {
         title: "Github Download Link",
-        url: "https://github.com/iamashking123/anime_manga/releases/download/v-3.2/down.apk",
+        url: "https://github.com/iamashking123/anime_manga/releases/download/v-3.3/down.apk",
       },
     ],
   ];
